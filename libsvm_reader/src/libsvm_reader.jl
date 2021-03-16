@@ -1,6 +1,6 @@
 module libsvm_reader
 
-export read
+export get_sparse_vector_array
 using SparseArrays
 
 
@@ -21,7 +21,7 @@ function get_sparse_vector_array(fname::String)
         # create a dictionary for features
         x = Dict{Int64,Float32}()
         for itm in line
-            itm = split(item,":")
+            itm = split(itm,":")
             feature = parse(Int64,itm[1])
             value   = parse(Float32,itm[2])
             max_feature_index = max(max_feature_index,feature)
